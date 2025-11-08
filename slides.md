@@ -30,23 +30,27 @@ colorSchema: dark
   <img src="/sigasia.png" alt="lab logo" class="h-[100px] opacity-100">
 </div>
 
-<!-- 
-Hi everyone, I will present our work Learned Display Radiance Fields with Lensless Cameras, which is a collaboration with Yuta, and Kaan.👆
- -->
+<!--
+Welcome everyone, and thank you for taking the time to join my presentation.
+Today, I’m delighted to share our work, “Learned Display Radiance Fields with Lensless Cameras.”
+This project is a collaborative effort with Professor Yuta Itoh from the **Institute of Science Tokyo** and my supervisor, Professor Kaan Akşit.👆
+
+-->
+
 ---
-layout: center
+layout: cover
 ---
 
-<div class="text-6xl font-bold text-center">
-  Motivation
-</div>
+#  Motivation
 
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
-<!-- 
-I would like first explain the motivation of this project👆
- -->
+
+<!--
+Why do we need display calibration and why it is useful, let's understand more about it 👆
+-->
+
 ---
 
 # Why Do We Need Display Calibration?
@@ -130,7 +134,7 @@ I would like first explain the motivation of this project👆
 </div>
 
 <!--
-👆Displays are everywhere in our daily life, from 👆 computers to smart phones. In recent years, we are also exposed to the virtual imagery with 👆 both AR and VR headsets👆
+👆Displays are everywhere in our daily life, from 👆 computers to smart phones. In recent years, we are also exposed to the virtual imagery with rise of 👆 both AR and VR headsets👆
 -->
 
 ---
@@ -203,10 +207,8 @@ displays often suffer from defects such as:
 </div>
 
 <!--
-However👆, not every pixel is equal👆 for example 👆 when I display a full black image with the display in our lab, you can see it does not produce an uniform black👆 if we zoom-in the image 👆 we can see that the light leaks from the edges. This is usually referred as backlight bleeding
+However in these displays👆, not every pixel is equal👆 for example 👆 when I display a full black image with the liquid crystal display in our lab, you can see it does not produce an uniform black pattern 👆 if we zoom-in the image 👆 we can see that the light leaks from the edges. This is usually referred as backlight bleeding
 -->
-
-
 
 ---
 
@@ -274,9 +276,7 @@ Displays also suffer from color inconsistency
 </div>
 
 <!--
-Despite the intensity non uniformity,👆 displays also suffer from color inconsistency👆 Now, I turn on two displays in our lab👆 showing the same color pallete 👆 As you can see the color varies.👆
-
-- Discoloration
+Despite the non uniform intensities,👆 displays also suffer from color inconsistency👆 Now, I turn on two displays in our lab👆 showing the identical color pattern on both displays 👆 As you can see the color varies dramatically from display to display.👆
 -->
 
 ---
@@ -581,8 +581,19 @@ And here is the captured display intensity heatmap with varying viewing angles.
 </div>
 
 <!--
-This time-consuming and user-unfriendly task hinders daily calibration for average users which means: 👆
+This is a time-consuming and user-unfriendly task hinders daily calibration for average users which means: 👆
  an accessible method with reasonable amount of captures is needed to measure the image quality of the displays from arbitrary viewpoints
+-->
+
+
+---
+layout: cover
+---
+
+# Implementation
+
+<!--
+Now let's talk about the implementation of our prototype
 -->
 
 ---
@@ -594,13 +605,12 @@ This time-consuming and user-unfriendly task hinders daily calibration for avera
 
 - **Lensless camera** captures angular information
 - **Implicit Neural Representation** learns pixel light fields
-- **Few captures** → many viewpoints
 
-</v-clicks>
 
-<v-clicks>
-
-<div  style="position: absolute; bottom: 30px; transform: translateX(20%);">
+<div  style="position: absolute; bottom: 30px" v-motion
+  :initial="{ x: -50 }"
+  :enter="{ x: 140 }"
+  >
   <div class="bg-white p-2 rounded-lg shadow-lg">
     <img 
       src="/lenless_lightfield_overview.png"
@@ -619,7 +629,7 @@ This time-consuming and user-unfriendly task hinders daily calibration for avera
 </div>
 
 <!--
-We propose to use a 👆 lensless camera together with an 👆 implicit neural representation to measure angle-dependent display intensities,👆 with a simpler setup. Before we dive into the setup, I would love to first explain what is lensless camera
+We propose to use a 👆 lensless camera together with an 👆 implicit neural representation to measure angle-dependent display intensities,👆 with a simpler setup 👆. Before we dive into the setup, I would love to first explain what is lensless camera
 -->
 
 ---
@@ -630,7 +640,7 @@ layout: default
 
 # Imaging system
 
-<div v-after style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
+<div v-click=[1,2] style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);" >
   <div class="bg-black border-8 border-white p-2 rounded-lg shadow-lg">
     <img src="/conventional.png" alt="sensor" class="w-130 h-auto object-cover">
   </div>
@@ -638,27 +648,8 @@ layout: default
     <span class="text-orange-500">One-to-One</span> mapping
   </div>
 </div>
-<p style="position: absolute; bottom: 0px; right: 20%; font-size: 0.6em; color: #888;">
-<a href="https://commons.wikimedia.org/wiki/File:Ccd-sensor.jpg">C-M</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
-</p>
 
-<div class="absolute bottom-4 right-6 text-sm text-gray-400">
-  <SlideCurrentNo /> / <SlidesTotal />
-</div>
-
-<!--
-Let's first think of the conventional imaging setup, where we have the object on the left, lens at the middle, and sensor on the right. In this case, each point on the object has a one-to-one mapping on the imaging sensor.
--->
-
----
-transition: fade
-class: text-white
-layout: default
----
-
-# Imaging system
-
-<div v-after style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
+<div v-click=[2,3] style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
   <div class="bg-black border-8 border-white p-2 rounded-lg shadow-lg">
     <img src="/no_lens.png" alt="sensor" class="w-130 h-auto object-cover">
   </div>
@@ -667,28 +658,8 @@ layout: default
   </div>
 
 </div>
-<p style="position: absolute; bottom: 0px; right: 20%; font-size: 0.6em; color: #888;">
-<a href="https://commons.wikimedia.org/wiki/File:Ccd-sensor.jpg">C-M</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
-</p>
 
-<div class="absolute bottom-4 right-6 text-sm text-gray-400">
-  <SlideCurrentNo /> / <SlidesTotal />
-</div>
-
-
-<!--
-Without a lens, light rays from every point on the object spread out and hit multiple points on the sensor simultaneously, creating an unfocused image
--->
-
----
-transition: fade
-class: text-white
-layout: default
----
-
-# Imaging system
-
-<div v-after style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
+<div v-click=3 style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
   <div class="bg-black border-8 border-white p-2 rounded-lg shadow-lg">
     <img src="/lensless_system.png" alt="sensor" class="w-130 h-auto object-cover">
   </div>
@@ -697,7 +668,8 @@ layout: default
   </div>
 
 </div>
-<p style="position: absolute; bottom: 0px; right: 20%; font-size: 0.6em; color: #888;">
+
+<p v-click=1 style="position: absolute; bottom: 0px; right: 20%; font-size: 0.6em; color: #888;">
 <a href="https://commons.wikimedia.org/wiki/File:Ccd-sensor.jpg">C-M</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons
 </p>
 
@@ -705,47 +677,223 @@ layout: default
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
 
-
 <!--
-By adding a specially designed mask, we can control or modulated the light reach the sensor. This creates a typical lensless imaging system where the target images are reconstructed with post-processing pipelines
+Let's first think of the conventional imaging setup👆, where we have the object on the left, lens at the middle, and sensor on the right. In this case, each point on the object has a one-to-one mapping on the imaging sensor. This one-to-one mapping does not provide any angular diversity for the captured points👆
+
+Without a lens, light rays from every point on the object spread out and hit multiple points on the sensor simultaneously, creating an unfocused image that captures information from wide varity of angles.👆
+
+By adding a specially designed mask, we can control or modulate the light reaching to the sensor. This creates a typical lensless imaging system where the target images are reconstructed with post-processing pipelines
 You can see from this plot that only secleted light are able to pass and captured by the sensor.
+In our proposal we will be utilizing lensless camera's ability to capture angular information with a single shot. whereas the conventional cameras would require multiple captures
 -->
 
 ---
 
-# Reconstruction
+# Forward model
 
+<div v-click>
 
+We model the lensless camera as a linear convolution process. 
 
----
+</div>
 
-# Ours
-
-Our lensless camera with a aperture array captures horizontal and vertical incident angle coverage of approximately **46.6** and **37.6** degrees, respectively.  
-
-<v-clicks>
-
-<div  style="position: absolute; bottom: 55px; transform: translateX(13%);">
-  <div class="bg-white p-2 rounded-lg shadow-lg">
-    <img 
-      src="/incident_angle.png"
-      class="w-170 h-auto object-cover"
-    >
-  </div>
-  <div class="text-center mt-2">
-    Top view of our lensless camera
+<div v-click=[1,2]>
+  <div  style="position: absolute; bottom: 90px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
   </div>
 </div>
 
+<div v-click=[2,3]>
+  <div  style="position: absolute; bottom: 90px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution_1.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
 
-</v-clicks>
+<div v-click=[3,4]>
+  <div  style="position: absolute; bottom: 90px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution_2.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<div v-click=[4,5]>
+  <div  style="position: absolute; bottom: 90px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution_3.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<div v-click=5>
+  <div  style="position: absolute; bottom: 90px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution_4.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<div v-click=6 class="absolute right-15 top-10">
+
+<span class="text-green-500 " style="font-size: 30px;">✅ Linear operation</span>
+
+</div>
+
+<div class="absolute bottom-4 right-6 text-sm text-gray-400">
+  <SlideCurrentNo /> / <SlidesTotal />
+</div>
+<!--
+We model our lensless camera as a convolutional approximation, 👆 where the 👆sensor measurement 👆is represented as the convolution 👆 between the scene’s radiance 👆 and the precaptured point spread function (PSF) 👆.
+This formulation assumes spatial invariance within the local region of interest, allowing us to describe the image formation process as a 👆linear operation.
+-->
+
+---
+
+# Hardware
+
+<div v-click>
+We need to keep the aperture small to maintain spatial invariance 
+</div>
+
+<br>
+
+<div v-click="[1,2]" v-motion
+  :initial="{ x: -40 }"
+  :enter="{ x: 250 }"
+  class="absolute">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/incident_angle.png"
+      class="w-80 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    Incident angle illustration
+  </div>
+</div>
+
+<div v-click="[2,3]" v-motion
+  :enter="{ x: 250 }"
+  class="absolute">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/incident_angle_1.png"
+      class="w-80 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    Incident angle illustration
+  </div>
+</div>
+
+<div v-click="[3,5]" v-motion
+  :enter="{ x: 250 }"
+  :leave="{ x: 40 }"
+  class="absolute">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/incident_angle_2.png"
+      class="w-80 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    Incident angle illustration
+  </div>
+</div>
+
+<div v-click="[4,5]" class="absolute right-15 top-10">
+
+<span class="text-red-500 " style="font-size: 30px;"> ❌ Limited FoV</span>
+
+</div>
+
+<div v-click="[5,6]" v-motion
+  :initial="{ x: -40 }"
+  :enter="{ x: 200 }"
+  class="absolute">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/fov_expansion_3.png"
+      class="w-130 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    Incident angle illustration
+  </div>
+  
+</div> 
+
+<div v-click="[6,7]" v-motion
+  :enter="{ x: 200 }"
+  class="absolute">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/fov_expansion_1.png"
+      class="w-130 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    Incident angle illustration
+  </div>
+  
+</div> 
+
+<div v-click="7" v-motion
+  :enter="{ x: 200 }"
+  class="absolute">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/fov_expansion_0.png"
+      class="w-130 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    Incident angle illustration
+  </div>
+  
+</div> 
+
 
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
 
 <!--
-In practice, we capture images from nine positions on the display using the lensless camera, then computationally reconstruct its angular information.
+In order to maintain spatial invariance, 👆 we need to keep the aperture small 👆, however the field of view is largely dependent on the aperture size👆 and this samll aperture limits the practical FoV 👆. Therefore, we use an aperture array 👆 to expand the FoV, under the assumption that the adjecent pixels have similar behavior. so as we keep the sensor fixed, we turn on the pixels sequencially 👆👆.
 -->
 
 ---
@@ -754,12 +902,12 @@ In practice, we capture images from nine positions on the display using the lens
 
 <br>
 
-<v-clicks>
+<div v-clicks>
 
 - We sample nine positions on the display with our lensless camera
 - Computationally recover the angular information of the display
 
-</v-clicks>
+</div>
 
 <v-clicks>
 
