@@ -887,7 +887,11 @@ We need to keep the aperture small to maintain spatial invariance
   
 </div> 
 
+<div v-click="5" class="absolute right-15 top-10">
 
+<span class="text-green-500 " style="font-size: 30px;"> ✅ Expanded FoV</span>
+
+</div>
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
@@ -898,20 +902,19 @@ In order to maintain spatial invariance, 👆 we need to keep the aperture small
 
 ---
 
-# Ours
+# Hardware
+
+<div>
+We sample nine positions on the display with our lensless camera
+</div>
 
 <br>
 
-<div v-clicks>
-
-- We sample nine positions on the display with our lensless camera
-- Computationally recover the angular information of the display
-
-</div>
-
-<v-clicks>
-
-<div  style="position: absolute; bottom: 25px; transform: translateX(85%);">
+<div v-click="[1,2]" v-motion
+  :initial="{ x: 200 }"
+  :enter="{ x: 300 }"
+  :leave="{ x: 30 }"
+  class="absolute">
   <div class="bg-white p-2 rounded-lg shadow-lg">
     <img 
       src="/lensless_camera.png"
@@ -923,54 +926,236 @@ In order to maintain spatial invariance, 👆 we need to keep the aperture small
   </div>
 </div>
 
+<div v-click="2" class="absolute left-40" >
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <video controls autoplay muted loop playsinline style="width: 625px;"  >
+      <source src="/Ours.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="text-center mt-2">
+    Capturing angle-dependent intensities using our prototype
+  </div>
+</div>
 
-</v-clicks>
+<div v-click="3" class="absolute right-15 top-10">
+
+<span class="text-green-500 " style="font-size: 30px;"> ✅ No darkroom needed!</span>
+
+</div>
 
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
 
-<!-- 
-Here's a time-lapse showing our proposed workflow, which takes about 2 minutes.
+<!--
+We sample nine positions of the display with our prototype 👆 and here 👆 is a time-lapse of our proposed workflow, which takes about 2 minutes and 👆 no dark room is needed
 -->
 
 ---
-transition: none
----
-# Ours Video
+
+# Hardware
+
+<v-click>
+We still need to capture the Point Spread Function (PSF) for each aperture
+</v-click>
+
+<br>
+<br>
+
+<div v-click="[2, 4]"
+  v-motion
+  :initial="{ x: -50 }"
+  :enter="{ x: 250 }"
+  :click-3="{ x: -1 }"
+  class="absolute ">
+  <div>
+      <div class="bg-white p-2 rounded-lg shadow-lg">
+        <img src="/psf_capture_setup.png" 
+            alt="sensor" 
+            class="h-80 w-auto object-cover block">
+      </div>
+      <div class="text-center mt-2">
+        Capture setup
+      </div>
+  </div>
+</div>
+
+<div v-click=4
+  v-motion
+  :initial="{ x: -1}"
+  class="absolute">
+  <div>
+      <div class="bg-white p-2 rounded-lg shadow-lg">
+        <img src="/psf_capture_setup.png" 
+            alt="sensor" 
+            class="h-80 w-auto object-cover block">
+      </div>
+      <div class="text-center mt-2">
+        Capture setup
+      </div>
+  </div>
+</div>
+
+<div v-click=4 class="absolute right-10 bottom-8" v-motion
+  :initial="{ x: -50 }"
+  :enter="{ x: 0 }"
+  :leave="{ x: 50 }">
+  <div>
+      <div class="bg-white p-2 rounded-lg shadow-lg">
+        <img src="/psf_set.png" 
+            alt="sensor" 
+            class="h-80 w-auto object-cover block">
+      </div>
+      <div class="text-center mt-2">
+        Pre-captured psf set
+      </div>
+  </div>
+</div>
+
+
 
 
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
----
 
-<video controls style>
-  <source src="/Ours.mp4" type="video/mp4">
-</video>
+<!--
+👆In order to complete the forward model, we still need to capture point spread funciton for each aperture, 👆 this is our setup to capture the PSF which includes a 4f system, a pinhole and a lensless camera.👆👆. On right is the cpatured PSFs
+-->
 
-<div class="absolute bottom-4 right-6 text-sm text-gray-400">
-  <SlideCurrentNo /> / <SlidesTotal />
-</div>
 
 ---
 
-# INR Model
+# Implicit Neural Representation
 
+<br>
 
 <v-clicks>
 
 
 <!-- THIS ONE WORKS SO WELL -->
-<div  style="position: absolute; bottom: 40px; transform: translateX(25%);">
+<div v-motion
+  :initial="{ x: 10 }"
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
   <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
-    <img src="/model_pipeline.png" alt="sensor" class="w-150 h-auto object-cover">
+    <img src="/model_pipeline.png" alt="sensor" class="w-175 h-auto object-cover">
   </div>
   <div class="text-center mt-2">
     Model overview
   </div>
 </div>
 
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_1.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_2.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+
+
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_3.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_4.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_5.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_6.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_7.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_8.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+
+<div v-motion
+  :enter="{ x: 100 }"
+  class="absolute"
+  >
+  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
+    <img src="/model_pipeline_9.png" alt="sensor" class="w-175 h-auto object-cover">
+  </div>
+  <div class="text-center mt-2">
+    Model overview
+  </div>
+</div>
+
+
+
+
 </v-clicks>
 
 
@@ -978,25 +1163,78 @@ transition: none
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
 
-<!-- 
-Our implicit neural representation uses fully connected layers with 32 neurons and a sinusoidal activation.
-For each input coordinate group, we apply positional encoding at multiple frequency levels.
-These encoded features are then concatenated and passed through the network to reconstruct the light field.
-We convolve this reconstruction with the pre-captured point spread functions to predict the lensless image.
-Finally, we compare the predicted image with the captured one to compute the loss.
+<!--
+After we collect the lensless captures we applied the 👆 implicit neural representation to encode the angular information.
+We model the inputs 👆 as three groups of coordinates. 👆 The x,y is the display pixel coordinates indicating where do we capture the image, 👆 the u,v is the light field anular coordinates which is calculated based on the geometry we showed earlier, 👆 the s,t is the image coordinates just like the other implicit neural representation methods for image compression. For each of the coordinate group, we apply positional encoding 👆 at different frequency levels.
+These encoded features are then concatenated 👆 and passed through 👆 fully connected layers with 32 neurons and a sinusoidal activation.
+We 👆 convolve the output reconstruction with the pre-captured point spread functions to predict the lensless image.
+Finally, 👆 we compare the predicted image with the captured one to compute the loss.
 -->
 
 ---
 
 # Results
 
+
+
+
+<div v-click="[1,2]" v-motion
+  :initial="{ x: 10 }"
+  :enter="{ x: 200 }"class = "absolute bottom-100px">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/capture_illustration.png"
+      class="w-125 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    The average intensity comparison
+  </div>
+</div>
+
+<div v-click="2" v-motion
+  :initial="{ x: 200 }"
+  :leave="{ x: 20 }"class = "absolute bottom-50px">
+  <div class="bg-white p-2 rounded-lg shadow-lg">
+    <img 
+      src="/capture_illustration_1.png"
+      class="w-125 h-auto object-cover"
+    >
+  </div>
+  <div class="text-center mt-2">
+    The average intensity comparison
+  </div>
+</div>
+
+<div v-click="3" class="absolute right-15 top-10">
+
+<span class="text-yellow-500 " style="font-size: 30px"> Average intensity per view</span>
+
+</div>
+
+<div class="absolute bottom-4 right-6 text-sm text-gray-400">
+  <SlideCurrentNo /> / <SlidesTotal />
+</div>
+
+<!--
+👆 To benchmark our method, we use the ISO standard from −10◦ to 16◦ vertical incident angles and we simulate the display intensity with our model. 👆 this plot shows the average intensity 👆 for each view and our method reproduces the ISO intensity trend, validating its physical plausibility.
+-->
+
+---
+
+# Results
+
+<div>
 We compare the simulated display digital twin with the real-world display capture that is captured with a conventional camera
+</div>
 
 <br>
 
 <v-clicks>
 
-<div  style="position: absolute; bottom: 75px; transform: translateX(25%);">
+<div  v-motion
+  :initial="{ x: 20 }"
+  :enter="{ x: 150 }"class = "absolute">
   <div class="bg-white p-2 rounded-lg shadow-lg">
     <img 
       src="/real_world_simulation.png"
@@ -1014,111 +1252,119 @@ We compare the simulated display digital twin with the real-world display captur
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
-<!-- 
-We use the model to simulat the display image at different view point, as shown in the image down below.
+
+<!--
+Despite of simulating the average intensity of the display,👆 our model is capable of generate the full display
 -->
+
 ---
 
 # Results
+
+<div>
 
 We can also simulate the pixels at close viewpoints
+</div>
+
+<br>
 
 <v-clicks>
-
-<div  style="position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
-  <div class="bg-white p-2 rounded-lg shadow-lg inline-block">
-    <img src="/supplementary_zoomin.png" alt="sensor" class="w-400 h-auto object-cover">
-  </div>
-  <div class="text-center mt-2">
-  The average intensity comparison
-  </div>
-</div>
-</v-clicks>
-
-<div class="absolute bottom-4 right-6 text-sm text-gray-400">
-  <SlideCurrentNo /> / <SlidesTotal />
-</div>
-<!-- 
-We can also simulate a close up view of the display.
--->
----
-
-# Results
-
-The novel pixels pixels with different incident angles show similar radial pattern with the professional equipment result
-
-<div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px; position: absolute; left: 50%; bottom: 80px; transform: translateX(-50%);">
-
-  <!-- First image -->
-  <div class="bg-white p-2 rounded-lg shadow-lg" style="flex: 0 0 auto;">
-    <img src="/interpolation_w_heatmap.png" alt="sensor" style="height: 200px; width: auto; object-fit: cover;">
-    <div class="text-center mt-2">
-      The average intensity comparison
-    </div>
-  </div>
-
-  <!-- Second image + credit -->
-  <figure style="flex: 0 0 auto; text-align: center;">
-    <a href="https://example.com/original-image-page" target="_blank" rel="noopener noreferrer">
-      <img
-        src="https://sensing.konicaminolta.asia/wp-content/uploads/2023/11/Radiant-Conoscope-Lens-system-Cartesian-Coordinates.webp"
-        alt="Short, accurate description of the image"
-        loading="lazy"
-        decoding="async"
-        style="height: 250px; width: auto; object-fit: contain; background: white; padding: 4px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
-      >
-    </a>
-    <figcaption style="font-size:0.75rem; color:#6b7280; margin-top: 0.25rem;">
-      Used for commentary/educational purposes; all rights belong to the copyright holder.
-      <a href="https://sensing.konicaminolta.asia/fast-and-accurate-way-to-measure-viewing-angle-performance-of-display/" target="_blank" rel="noopener noreferrer">Konica Minolta</a>.
-    </figcaption>
-  </figure>
-
-</div>
-
-<div class="absolute bottom-4 right-6 text-sm text-gray-400">
-  <SlideCurrentNo /> / <SlidesTotal />
-</div>
-
-<!-- 
-We evaluate pixel consistency by checking how well the reconstructed light fields maintain intensity variations across continuous horizontal and vertical angles.
-On the left, you can see that the average pixel intensity changes smoothly, showing that our model can predict new pixel values that depend on the viewing angle.
-These predicted pixels also exhibit a similar radial pattern to the results measured with professional equipment on the right.
--->
----
-
-# Results
-
-<v-clicks>
-
-- **PSNR** <span class="text-green-500">19.54 dB</span>
-- **SSIM** <span class="text-green-500">0.9165</span>; **MSSIM** <span class="text-green-500">0.9549</span>
-- Matches ISO trends without rotation/darkroom
-
-</v-clicks>
-
-<v-clicks>
-
-<div  style="position: absolute; bottom: 30px; transform: translateX(20%);">
+<div  v-motion
+  :initial="{ x: 20 }"
+  :enter="{ x: 150 }"class = "absolute">
   <div class="bg-white p-2 rounded-lg shadow-lg">
     <img 
-      src="/capture_illustration.png"
+      src="/supplementary_zoomin.png"
       class="w-150 h-auto object-cover"
     >
   </div>
   <div class="text-center mt-2">
-    The average intensity comparison
+    Comparison between real-world and simulation display
+  </div>
+</div>
+</v-clicks>
+
+
+<div class="absolute bottom-4 right-6 text-sm text-gray-400">
+  <SlideCurrentNo /> / <SlidesTotal />
+</div>
+<!-- 
+👆 We can also simulate a close up view of the display.
+-->
+---
+
+# Results
+
+<v-click>
+The novel pixels pixels with different incident angles show similar radial pattern with the professional equipment result
+</v-click>
+
+<br>
+
+<div v-click="[2, 4]"
+  v-motion
+  :initial="{ x: -50 }"
+  :enter="{ x: 250 }"
+  :click-3="{ x: -1 }"
+  class="absolute ">
+  <div>
+      <div class="bg-white p-2 rounded-lg shadow-lg">
+        <img src="/interpolation_w_heatmap.png" 
+            alt="sensor" 
+            class="h-80 w-auto object-cover block">
+      </div>
+      <div class="text-center mt-2">
+        The interpolation intensities
+      </div>
   </div>
 </div>
 
-</v-clicks>
+<div v-click=4 class="absolute" v-motion
+  :initial="{ x: 10 }"
+  :enter="{ x: 380 }"
+  :leave="{ x: 50 }"
+  >
+  <div>
+      <div class="bg-white p-2 rounded-lg shadow-lg">
+        <img src="https://sensing.konicaminolta.asia/wp-content/uploads/2023/11/Radiant-Conoscope-Lens-system-Cartesian-Coordinates.webp" 
+            alt="sensor" 
+            class="h-70 w-auto object-cover block">
+      </div>
+      <div class="text-[0.55em] text-gray-500 mt-2" style="margin: 0;">
+      Used for commentary/educational purposes; all rights belong to the copyright holder.
+      <a href="https://sensing.konicaminolta.asia/fast-and-accurate-way-to-measure-viewing-angle-performance-of-display/" target="_blank" rel="noopener noreferrer">Konica Minolta</a>.
+      </div>
+  </div>
+</div>
+
+
+<div v-click="4"
+  v-motion
+  :enter="{ x: 10 }"
+  :initial="{ x: 40 }"
+  :leave="{ x: 50 }"
+  class="absolute bottom-100px">
+  <div>
+      <div class="bg-white p-2 rounded-lg shadow-lg">
+        <img src="/interpolation_w_heatmap.png" 
+            alt="sensor" 
+            class="h-50 w-auto object-cover block">
+      </div>
+      <div class="text-center mt-2">
+        The interpolation intensities
+      </div>
+  </div>
+</div>
+
 
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
 
-<!-- 
-Our method delivers high image quality for novel pixels, and its normalized intensity closely follows the trend defined by the ISO standard.
+<!--
+👆 We evaluate pixel consistency by checking how well the reconstructed light fields maintain  intensity variations across continuous horizontal and vertical angles.
+👆the average intensity per novel pixel changes smoothly, showing that our model interpolates well.
+These predicted intensities also exhibit 👆👆 a similar radial pattern to the results measured with professional equipment on the right.
 -->
 
 ---
