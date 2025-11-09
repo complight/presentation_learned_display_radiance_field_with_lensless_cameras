@@ -1007,7 +1007,7 @@ We still need to capture the Point Spread Function (PSF) for each aperture
             class="h-80 w-auto object-cover block">
       </div>
       <div class="text-center mt-2">
-        Pre-captured psf set
+        Captured PSF set
       </div>
   </div>
 </div>
