@@ -38,6 +38,27 @@ This project is a collaborative effort with Professor Yuta Itoh from the **Insti
 -->
 
 ---
+
+# Motivation
+
+<br>
+
+<div class="absolute left-20 relative">
+  <div class="bg-white p-2 rounded-lg shadow-lg relative inline-block">
+    <video controls style="width: 700px; border-radius: 0.5rem;">
+      <source src="/teaser.mp4" type="video/mp4">
+    </video>
+    <div class="absolute top-2 right-2 bg-black bg-opacity-60 text-white text-s px-2 py-1 rounded-md">
+      Visual created using Adobe Firefly (AI-generated content)
+    </div>
+  </div>
+</div>
+
+<div class="absolute bottom-4 right-6 text-sm text-gray-400">
+  <SlideCurrentNo /> / <SlidesTotal />
+</div>
+
+---
 layout: cover
 ---
 
@@ -48,7 +69,7 @@ layout: cover
 </div>
 
 <!--
-Why do we need display calibration and why it is useful, let's understand more about it 👆
+let us dive deep into our motivation, to understand the underlying research problems that led to our development.👆
 -->
 
 ---
@@ -697,8 +718,15 @@ We model the lensless camera as a linear convolution process.
 
 </div>
 
-<div v-click=[1,2]>
-  <div  style="position: absolute; bottom: 90px; left: 100px;">
+
+<div v-click="[1,2]" >
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_0.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
     <div class="bg-white p-2 rounded-lg shadow-lg">
       <img 
         src="/lensless_convolution.png"
@@ -711,8 +739,17 @@ We model the lensless camera as a linear convolution process.
   </div>
 </div>
 
-<div v-click=[2,3]>
-  <div  style="position: absolute; bottom: 90px; left: 100px;">
+
+<!-- lensless image -->
+<div v-click="[2,3]">
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_1.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
     <div class="bg-white p-2 rounded-lg shadow-lg">
       <img 
         src="/lensless_convolution_1.png"
@@ -725,8 +762,16 @@ We model the lensless camera as a linear convolution process.
   </div>
 </div>
 
-<div v-click=[3,4]>
-  <div  style="position: absolute; bottom: 90px; left: 100px;">
+<!-- covolution -->
+<div v-click="[3,4]">
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_2.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
     <div class="bg-white p-2 rounded-lg shadow-lg">
       <img 
         src="/lensless_convolution_2.png"
@@ -739,8 +784,16 @@ We model the lensless camera as a linear convolution process.
   </div>
 </div>
 
-<div v-click=[4,5]>
-  <div  style="position: absolute; bottom: 90px; left: 100px;">
+<!-- display pixel -->
+<div v-click="[4,5]">
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_5.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
     <div class="bg-white p-2 rounded-lg shadow-lg">
       <img 
         src="/lensless_convolution_3.png"
@@ -753,8 +806,16 @@ We model the lensless camera as a linear convolution process.
   </div>
 </div>
 
-<div v-click=5>
-  <div  style="position: absolute; bottom: 90px; left: 100px;">
+<!-- PSF -->
+<div v-click="[5,6]">
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_6.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
     <div class="bg-white p-2 rounded-lg shadow-lg">
       <img 
         src="/lensless_convolution_4.png"
@@ -767,7 +828,112 @@ We model the lensless camera as a linear convolution process.
   </div>
 </div>
 
-<div v-click=6 class="absolute right-15 top-10">
+<!-- zero-pad -->
+<div v-click="[6,7]">
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_3.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<!-- cropping -->
+<div v-click="[7,8]">
+  <div class="absolute left-1/2 pt-15px transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_4.png"
+        class="w-auto h-8 object-cover"
+      >
+  </div>
+  
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<!-- lienar -->
+<div v-click="[8,10]">
+  <div class="absolute left-1/2 transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_10.png"
+        class="w-auto h-18 object-cover"
+      >
+  </div>
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<div v-click="[9,10]">
+  <div class="absolute left-1/2 transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_7.png"
+        class="w-auto h-18 object-cover"
+      >
+  </div>
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<div v-click=10>
+  <div class="absolute left-1/2 transform -translate-x-1/2 ">
+      <img 
+        src="/linear_system_8.png"
+        class="w-auto h-18 object-cover"
+      >
+  </div>
+  <div  style="position: absolute; bottom: 65px; left: 100px;">
+    <div class="bg-white p-2 rounded-lg shadow-lg">
+      <img 
+        src="/lensless_convolution.png"
+        class="w-190 h-auto object-cover"
+      >
+    </div>
+    <div class="text-center mt-2">
+      Lensless convolution
+    </div>
+  </div>
+</div>
+
+<div v-click=8 class="absolute right-15 top-10">
 
 <span class="text-green-500 " style="font-size: 30px;">✅ Linear operation</span>
 
@@ -776,9 +942,10 @@ We model the lensless camera as a linear convolution process.
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
+
 <!--
-We model our lensless camera as a convolutional approximation, 👆 where the 👆sensor measurement 👆is represented as the convolution 👆 between the scene’s radiance 👆 and the precaptured point spread function (PSF) 👆.
-This formulation assumes spatial invariance within the local region of interest, allowing us to describe the image formation process as a 👆linear operation.
+We model our lensless camera as a convolutional approximation, 👆 where the 👆sensor measurement 👆is represented as a linear convolution 👆 between the display pixel and the👆  precaptured point spread function (PSF) . Note that we first zero-pad 👆 and then 👆 crop them after convolution to avoid circular convolution.
+This formulation assumes spatial invariance within the local region of interest, allowing us to describe the image formation process as a 👆linear operation that can be done efficiently with the 👆 discrete fourier transform and the 👆inverse fourier transform.
 -->
 
 ---
@@ -1369,12 +1536,58 @@ These predicted intensities also exhibit 👆👆 a similar radial pattern to th
 
 ---
 
-# Thank you for watching!
+<div class="text-left text-white text-6xl font-bold mt-20">
+  Thank you for listening!
+</div>
+<br>
+<br>
+<br>
+
+<!-- Authors -->
+<div class="flex justify-left items-end text-center text-gray-200 gap-16">
+  <!-- Ziyang Chen -->
+  <div class="flex flex-col items-center">
+    <a href="https://ziyang.space" target="_blank" class="flex flex-col items-center">
+      <img src="/ziyang_chen.jpg" alt="Ziyang Chen"
+           class="w-24 h-24 rounded-full mb-2 border border-white-500 object-cover object-center transform translate-y-1">
+      <span class="text-xl leading-6 text-white font-bold">Ziyang Chen</span>
+    </a>
+  </div>
+
+  <!-- Yuta Itoh -->
+  <div class="flex flex-col items-center">
+    <a href="https://augvislab.github.io/people/yuta-itoh" target="_blank" class="flex flex-col items-center">
+      <img src="/yuta-itoh.jpg" alt="Yuta Itoh"
+           class="w-20 h-20 rounded-full mb-2 border border-gray-500 object-cover object-center opacity-60 hover:opacity-100 transition duration-300">
+      <span class="text-lg leading-6 text-gray-200">Yuta Itoh</span>
+    </a>
+  </div>
+
+  <!-- Kaan Akşit -->
+  <div class="flex flex-col items-center">
+    <a href="https://www.kaanaksit.com/" target="_blank" class="flex flex-col items-center">
+      <img src="/kaan_aksit.jpg" alt="Kaan Akşit"
+           class="w-20 h-20 rounded-full mb-2 border border-gray-500 object-cover object-center opacity-60 hover:opacity-100 transition duration-300">
+      <span class="text-lg leading-6 text-gray-200">Kaan Akşit</span>
+    </a>
+  </div>
+</div>
+
+<!-- Lab logo in corner -->
+<div class="absolute bottom-20 right-60">
+  <img src="/logo.png" alt="lab logo" class="h-[200px] opacity-100">
+</div>
+
+<div class="absolute bottom-20 right-14">
+  <a href="https://complightlab.com/publications/lensless_display_radiance_field/" target="_blank">
+  <img src="/QR.png" alt="lab logo" class="h-[200px] opacity-100" >
+  </a>
+</div>
 
 <div class="absolute bottom-4 right-6 text-sm text-gray-400">
   <SlideCurrentNo /> / <SlidesTotal />
 </div>
 
 <!--
--
+thank you for listening i am happy to answer any questions in the Q&A section.
 -->
