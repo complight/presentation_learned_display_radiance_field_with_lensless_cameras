@@ -1572,7 +1572,13 @@ These predicted intensities also exhibit 👆👆 a similar radial pattern to th
     </a>
   </div>
 </div>
-
+<br>
+<p class="flex flex-row items-center text-xl font-bold space-x-2">
+  <span>Email:</span>
+  <a href="mailto:ziyang.chen.22@ucl.ac.uk" class="text-blue-400 hover:underline">
+    ziyang.chen.22@ucl.ac.uk
+  </a>
+</p>
 <!-- Lab logo in corner -->
 <div class="absolute bottom-20 right-60">
   <img src="/logo.png" alt="lab logo" class="h-[200px] opacity-100">
